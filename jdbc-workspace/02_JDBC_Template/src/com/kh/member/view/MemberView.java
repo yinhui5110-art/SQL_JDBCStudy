@@ -35,10 +35,10 @@ public class MemberView {
 		// 사용자에게 무슨 값을 받아야하는지?
 		// 아이디,비번,이름
 		System.out.println("회원가입 서비스입니다.");
-		//String memberId = "";
+		String memberId;
 		while(true) {
-		System.out.println("사용하실 아이디를 입력해주세요 >");
-		String memberId = sc.nextLine();
+			System.out.println("사용하실 아이디를 입력해주세요 >");
+			memberId = sc.nextLine();
 		
 		if(!mc.idCheck(memberId)) {
 			break;
@@ -46,9 +46,9 @@ public class MemberView {
 		 System.out.println("이미 존재하는 아이디 입니다.");
 		
 		}	
-		System.out.println("사용하실 비밀번호를 입력해주세요 > ");
+		System.out.print("사용하실 비밀번호를 입력해주세요 > ");
 		String memberPwd =  sc.nextLine();
-		System.out.println("사용하실 이름을 입력해주세요 > ");
+		System.out.print("사용하실 이름을 입력해주세요 > ");
 		String memberName = sc.nextLine();
 		try {
 			int result = mc.signUp(new MemberDto(memberId, memberPwd, memberName));
