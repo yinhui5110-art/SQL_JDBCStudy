@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--mybatis 
+
+	XML에서는 주석작성하는 방법
+	이 문서가 configuration(환경설정)임을 알려준다
+	.dtd는 유효성 검사를 해준다
+	==> 최상위 부모요소가 configuration element(요소)
+	
+	
+ -->
+<configuration>
+
+	<settings>
+	<setting name="mapUnderscoreToCamelCase" value="true"/>
+	
+	
+	</settings>
+
+
+	
+	
+	<!-- typeAliases : VO / DTO 클래스들의 풀클래스명을 별칭으로 등록한다 -->
+	<typeAliases>
+	<typeAlias  type="com.kh.aimal.model.dto.AnimalDto" alias ="animal" />
+	
+	</typeAliases>
+	
+	<!-- 
+		environments : MyBatis에서 연동할 DB의 정보들을 등록하는 영역
+		각가의 DB정보는 enviornment태그를 이용해서 등록할 수 있다
+		=> 반드시! default속성을 이용해서 어떤 DBMS를 기본으로 쓸건지 지정해야한다!
+ 	-->
+
+
+	<environments default = "deployment">
+		<environment id = "deployment">
+		
+		<!-- 
+				*transactionManager : type이 필수 속성 JDBC / MANAGED 중 하나를 선택
+				-JDBC : 트랜잭션을 개발자가 직접 관리한다(수고 commit)
+				- MANAGED : 트랜잭션에 대해서 개발자는 아무것도 안하겠다(자동 commit)
+		 -->
+			<transactionManager type="JDBC"/>
+			
+			<!-- 
+				*dateSource의 type속성값은 POOLEX / UNPOOLED 중 하나를 선택(ConnectionPool)
+				ConnectionPool : Connection객체를 담아두는 영역, 한 번 생성된 객체를 재사용
+				
+				POOLED => 쓸다
+				UNPOOLED => 안쓴다
+				
+				DataSource객체의 필드에 값을 set하기 위해서 setter메소드를 호출해야하는데
+				XML파일에서는 setter메소들 호출해서 값을 대입하기 위해 property라는 요소를 사용한다.
+				객체.setname속성값("value속성값");
+				
+			 -->
+			
+			<dataSource type="POOLED">
+			<!-- XML SQLSessionFactory 빌드 객체를 이제 만들수 있다
+			ds.setDriver("oracle.jdbc.driver.OracleDriver" -->
+			<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
+			<property name="username" value="C##HY" />
+			<property name="password" value="HY" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- mappers : 실행할 SQL문을 기록해둔 mapper파일을 등록해둔 영역 -->
+	<mappers>
+	<mapper resource ="animal-mapper.xml" />
+	</mappers>
+
+
+
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,186 @@
+package com.kh.aimal.view;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.kh.aimal.controller.AnimalController;
+import com.kh.aimal.model.dto.AnimalDto;
+
+public class AnimalView {
+	private Scanner sc = new Scanner(System.in);
+	private AnimalController ac = new AnimalController();
+	/*
+	 * ANIMAL
+	 * 
+	 * insertAnimal
+	 * selectAnimalList
+	 * selectAnimal
+	 * updateAnimal
+	 * delectAnimal
+	 * 
+	 * ===========================
+	 * 
+	 * save
+	 * findAll
+	 * findByXXX
+	 * update
+	 * deleteByXXX
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
+	
+	public void mainMenu() {
+		while(true) {
+			System.out.println("동물 관리 시스템에 오신것을 환영합니다.");
+			System.out.println("1. 동물 추가하기");
+			System.out.println("2. 동물 전체 조회하기");
+			System.out.println("3. 동물 단일 조회하기");
+			System.out.println("4. 동물 이름 키워드로 조회하기");
+			System.out.println("메뉴선택 > ");
+			String menu = sc.nextLine();
+			
+			switch(menu) {
+			case "1" : save(); break;
+			case "2" : findAll(); break;
+			case "3" : findById(); break;
+			case "4" : findByKeyword(); break;
+			case "9" : sc.close(); return;
+			
+			
+			}
+		}
+	}
+	/*
+	 * 
+	 * mybatis-config.xml -> DB접속정보, 환경설정 등이 들어감
+	 * 						.getConnection()를 호출 시 전달했던 인자값을 대체
+	 * 
+	 * mapper.xml    -> SQL이 들어가는 파일
+	 * 					보편적으로 테이블 당 하나씩 만들어줌 (꼭 테이블간 1:1매핑 되는것은 아니다)
+	 * SqlSessionFactory -> DB세션을 만들어주는 공장 -> 프로그램 시작할 때 한 번만 만들어준다
+	 * 
+	 * SqlSession   ->실제로 SQL을 실행시키는 객체 -> JDBC의 Connection + Statement(nybatis가 만들어준다)
+	 * 
+	 * 우리가 작성한 mapper.xml.파일을 읽어서 PreparedStatement를 만들고
+	 * 파라미터를 자동으로 바인딩하고 ResultSet순회나 close도 다 알아서 처리해준다
+	 * =>
+	 * pstmt.setString(1, animalName);
+	 * ? 부분은 => #{animalId}
+	 * 
+	 * 개발자는 SQL작성 및 호출코드 작성
+	 * 
+	 * 
+	 * 
+	 */
+	
+	
+	private void save() {
+		
+		System.out.println("동물 추가 서비스입니다.");
+		System.out.println("동물의 이름을 입력하세요 > ");
+		String name = sc.nextLine();
+		
+		System.out.println("동물의 종 번호를 입력하세요 > ");
+		String speciesId = sc.nextLine();
+		
+		System.out.println("동물의 구역번호를 입력하세요 > ");
+		String zoneId = sc.nextLine();
+		
+		System.out.println("동물의 사육사번호를 입력하세요 > ");
+		String keeperId = sc.nextLine();
+		
+		System.out.println("동물의 성별을 입력하세요(M/F) > ");
+		String gender = sc.nextLine();
+		
+		System.out.println("동물의 몸무게를 입력하세요 > ");
+		double kg = sc.nextDouble();
+		
+		int result = ac.save(new AnimalDto(name,speciesId,zoneId,keeperId,gender,kg));
+		
+		if(result >0) {
+			System.out.println(name + "추가 성공!");
+		}else {
+			System.out.println(name + "추가 실패..");
+		}
+		
+	}
+	
+	
+	private void findAll() {
+		System.out.println("동물들 전체 조회 서비스 입니다.");
+		//전체조회는 꼭 정렬해야 한다!!
+		//왜냐면 동물이름,구역번호,사육사번호 여러개를 정렬해주기 위해서다
+		 List<AnimalDto> animals = ac.findAll();
+		
+		 if(animals.isEmpty()) {
+			 System.out.println("조회 결과가 존재하지 않습니다.");
+			 
+		 }else {
+			for(AnimalDto animal : animals) {
+				 System.out.println("동물번호 : " +animal.getAnimalId()
+						 			+", 동물이름 : " + animal.getAnimalName()
+						 			+", 종 이름 : " + animal.getSpeciesId()
+						 			+",구역 이름 : "+ animal.getZoneId()
+						 			+ ",사육사 이름 : " + animal.getKeeperId()
+						 			+ ",성별 : " + animal.getGender()
+						 			+ ", 몸무게 : " + animal.getWrightKg()+ "KG");
+			}
+			
+		 }
+		
+	}
+	
+	
+	private void findById() {
+		
+		System.out.println("동물 찾기 서비스 입니다.");
+		System.out.println("검색하실 동물의 ID를 입력해주세요 > ");
+		String id = sc.nextLine();
+		
+		AnimalDto animal = ac.findById(id);
+		
+		if(animal != null) {
+			System.out.println(animal.getAnimalId()+"의 정보");
+			System.out.println("동물 이름 : " + animal.getAnimalName());
+			System.out.println("종 이름 : " + animal.getSpeciesId());
+			System.out.println("구역 이름 : " + animal.getZoneId());
+			System.out.println("사육사 이름 : " + animal.getKeeperId());
+			System.out.println("성별 : " + animal.getGender());
+			System.out.println("몸무게 : " + animal.getWrightKg());
+			
+			
+			
+			
+			
+		}else {
+			System.out.println("동물이 존재하지 않습니다. ");
+		}
+		
+	}
+	
+	private void findByKeyword() {
+		System.out.println("동물이름 검색 서비스입니다.");
+		System.out.println("검색하실 키워드를 입력하세요 > ");
+		String keyword = sc.nextLine();
+		
+		List<AnimalDto> animals = ac.findByKeyword(keyword);
+		if(animals.isEmpty()) {
+			
+		}else {
+			for(AnimalDto animal : animals) {
+				System.out.println(animal);
+			}
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+
+}
