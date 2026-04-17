@@ -8,7 +8,7 @@ public class AnimalDto {
 	private String speciesId;
 	private String zoneId;
 	private String keeperId;
-	private String gender;
+	private String gender;  
 	private double wrightKg;
 	private Date birthDate;
 	private Date arrivalDate;

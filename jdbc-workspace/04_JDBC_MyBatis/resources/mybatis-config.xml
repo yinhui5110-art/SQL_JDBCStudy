@@ -9,14 +9,14 @@
 	이 문서가 configuration(환경설정)임을 알려준다
 	.dtd는 유효성 검사를 해준다
 	==> 최상위 부모요소가 configuration element(요소)
-	
+	  
 	
  -->
 <configuration>
 
 	<settings>
-	<setting name="mapUnderscoreToCamelCase" value="true"/>
-	
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="logImpl" value="STDOUT_LOGGING"/>
 	
 	</settings>
 
@@ -26,7 +26,7 @@
 	<!-- typeAliases : VO / DTO 클래스들의 풀클래스명을 별칭으로 등록한다 -->
 	<typeAliases>
 	<typeAlias  type="com.kh.aimal.model.dto.AnimalDto" alias ="animal" />
-	
+	<typeAlias type="com.kh.aimal.model.dto.KeeperDto" alias ="keeper"/>
 	</typeAliases>
 	
 	<!-- 
@@ -73,6 +73,7 @@
 	<!-- mappers : 실행할 SQL문을 기록해둔 mapper파일을 등록해둔 영역 -->
 	<mappers>
 	<mapper resource ="animal-mapper.xml" />
+	<mapper resource ="keeper-mapper2.xml" />
 	</mappers>
 
 

@@ -26,9 +26,30 @@ public class AnimalDao {
 		//조회결과가 존재하지 않는다면 null을 반환
 		return session.selectOne("animalMapper.findById",id);
 	}
-	public List<AnimalDto>findByKeyword(SqlSession session, String keyword){
+	public List<AnimalDto> findByKeyword(SqlSession session, String keyword){
 		return session.selectList("animalMapper.findByKeyword", keyword);
 	}
+	
+	
+	public int updateAnimal(SqlSession session,AnimalDto animal) {
+		return session.update("animalMapper.updateAnimal" , animal);
+	}
+	
+	
+	public int deleteAnimal(SqlSession session, String animalId) {
+		return session.delete("animalMapper.deleteAnimal", animalId);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }

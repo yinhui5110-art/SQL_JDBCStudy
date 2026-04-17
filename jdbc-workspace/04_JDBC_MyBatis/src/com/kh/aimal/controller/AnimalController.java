@@ -27,6 +27,13 @@ public class AnimalController {
 		return new AnimalService().findByKeyword(keyword);
 	}
 	
+	public int updateAnimal(AnimalDto animal) {
+		return new AnimalService().updateAnimal(animal);
+	}
+	
+	public int deleteAnimal(String animalId) {
+		return new AnimalService().deleteAnimal(animalId);
+	}
 	
 	
 }

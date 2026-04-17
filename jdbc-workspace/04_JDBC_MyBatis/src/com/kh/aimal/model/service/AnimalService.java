@@ -46,12 +46,50 @@ public class AnimalService {
 	public List<AnimalDto> findByKeyword(String keyword){
 		SqlSession session = Template.getSqlSession();
 		
-		AnimalDto animals = new AnimalDao().findByKeyword(session, keyword);
+		List<AnimalDto> animals = new AnimalDao().findByKeyword(session, keyword);
 		session.close();
 		
 		return animals;
 		
 	}
+	
+	public int updateAnimal(AnimalDto animal) {
+		
+		SqlSession session = Template.getSqlSession();
+		int result = new AnimalDao().updateAnimal(session, animal);
+		
+		
+		if(result > 0) {
+			session.commit();
+		}
+		session.close();
+		
+		return result;
+	}
+	
+	
+	public int deleteAnimal(String animalId) {
+		
+		SqlSession session = Template.getSqlSession();
+		int result = new AnimalDao().deleteAnimal(session, animalId);
+		
+		if(result > 0) {
+			session.commit();
+		}
+			session.close();
+			return result;
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

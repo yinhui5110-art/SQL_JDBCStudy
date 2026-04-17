@@ -83,22 +83,22 @@
 	
 	<sql id ="selectAnimalcolumn">
 		SELECT
-				ANIMAL_ID animalId
+			   ANIMAL_ID animalId
 			 , ANIMAL_NAME animalName
 			 , SPECIES_NAME speciesId
 			 , NVL(KEEPER_NAME,'없음') keeperId
 			 , ZONE_NAME zoneId
 			 , GENDER gender
 			 , WEIGHT_KG weightKg
-	  FROM
-	   		ANIMAL
-	   JOIN
-	   		SPECIES USING(SPECIES_ID)		 
-	JOIN
-			ZONE USING(ZONE_ID)
-	LEFT
-	JOIN
-			KEEPER USING(KEEPER_ID)
+		  FROM
+		   		ANIMAL
+		   JOIN
+		   		SPECIES USING(SPECIES_ID)		 
+		JOIN
+				ZONE USING(ZONE_ID)
+		LEFT
+		JOIN
+				KEEPER USING(KEEPER_ID)
 
 	</sql>
 	
@@ -106,13 +106,10 @@
 	
 	<select id="findAll"
 			resultType = "animal">	
-	<include refid= "selectAnimalColumn" />		
-	ORDER
-	 BY
-			ANIMAL_ID DESC
-	
-	
-	
+		<include refid= "selectAnimalcolumn" />		
+		ORDER
+		 BY
+				ANIMAL_ID DESC
 	</select>
 	
 	<!-- 
@@ -128,7 +125,7 @@
 <select id="findById"
 			resultType="animal"
 			parameterType="string">
-	<include refid="selectAnimalColumn" />		
+	<include refid="selectAnimalcolumn" />		
 	WHERE
 			ANIMAL_ID = #{id}		
 	
@@ -150,10 +147,28 @@
 	</select>
 
 
+	<update id="updateAnimal">
+	UPDATE
+			ANIMAL
+	SET					<!-- 필드명을 가진 getter를 찾아야 값을 뽑아올 수 있다 -->
+			ZONE_ID = #{zoneId}
+			,KEEPER_ID = #{keeperId}
+			,WEIGHT_KG = #{weightKg}
+	WHERE
+			ANIMAL_ID = #{animalId}  				
+	
+	
+	</update>
 
 
-
-
+	<delete id="deleteAnimal">
+	DELETE
+	 FROM
+	 		ANIMAL
+	 WHERE
+	 		ANIMAL_ID = #{animalId}		
+	
+	</delete>
 
 
 
