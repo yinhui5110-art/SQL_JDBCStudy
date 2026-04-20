@@ -15,9 +15,13 @@ public class CroscController {
 		//4)
 		return crocsService.save(crocsDto);
 	}
-	*/
+	
 	private void insertCrosc(CrocsDto cd) {
 		new CrocsService().insertCrosc(cd);
+	}
+	*/
+	public int siginUP(CrocsDto crocsMember) {
+		new CrocsService().signUp(crocsMember);
 	}
 	
 	

@@ -16,15 +16,19 @@ public class CrocsService {
 		
 		
 	}
-	*/
+	
 	
 	public int insertCorcs(CrocsDto cd) {
 		
 		Connection conn = 
 	}
+	*/
 	
-	
-	
+	public int signUp(CrocsMember) {
+		if(CrocsMemeber.getCrocsId().length() > 30) {
+			throw new CrocsIdToLargeException("아이디 15자미만으로 설정해주세요.");
+		}
+	}
 	
 	
 	

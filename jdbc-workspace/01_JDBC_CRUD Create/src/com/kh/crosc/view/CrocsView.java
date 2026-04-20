@@ -29,7 +29,7 @@ public class CrocsView {
 	
 	private void signUp() {
 		System.out.println("크록스클럽 회원가입 서비스입니다. ");
-		
+		String CrocsId;
 		while(true) {
 		System.out.println("사용하실 아이디를 입력해주세요 >");
 		String crocsId = sc.nextLine();
