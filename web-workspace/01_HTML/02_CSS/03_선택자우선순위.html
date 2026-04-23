@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>선택자 우선순위</title>
+    <style>
+        #id1{
+            background-color:dodgerblue;
+        }
+        h1{
+            color:white;
+            /*선택자 우선 순위여서 배경색은 바뀌지 않는다*/
+            /*CSS는 위에서 아래 순서로 적용이 된다*/
+        }
+        h1{
+            color:yellow;
+            /*위에 있는 우선순의 컬러에서 덮어씌어졌다*/
+        }
+
+        .class1{
+            background-color : darkkhaki;
+            color:aqua;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1 id="id1" class="class1" 
+    style="background-color:wheat" >선택자 우선 순위!</h1>
+    <pre>
+        기본적으로 css는 스타일이 위에서부터 아래 순서로 반영
+        동일한 선택자를 이용해서 스타일을 부여하면
+        하단에 위치한 스타일속성이 적용
+        다양한 선택자를 이용해서 스타일을 부여하면
+        우선순위에 따라 적용
+
+        !important
+        ↑
+        인라인스타일 방식
+        ↑
+        아이디 선택자가 
+         ↑
+         클래스 선택자
+         ↑
+        태그 선택자보다 우선 순위가 높다
+    </pre>
+
+    
+</body>
+</html>

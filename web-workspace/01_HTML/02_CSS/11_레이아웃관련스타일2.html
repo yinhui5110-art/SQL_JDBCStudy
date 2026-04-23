@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>권장방법</title>
+
+    <style>
+        .container{
+            border : 3px solid lightgray;
+            padding :20px;
+            background : lightblue;
+            width: 1200px;
+            height: 200px;
+            
+        }
+
+        .pink{
+            background: pink;
+        }
+
+        .orange{
+            background: orange;
+        }
+        .skyblue{
+                background: skyblue;
+        }
+
+        .purple{
+            background: purple;
+        }
+
+        .lightcoral{
+            background: lightcoral;
+        }
+
+        .box{
+            padding: 20px;
+            text-align:center;
+            font-weight : bold;
+            color: yellow;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <h1>div를 가로로 배치시켜보기</h1>
+
+    <pre>
+        선택자{
+            display : flex;
+
+        }
+        flex를 적용하면 자식요소들이 가로방향으로 정렬된다.
+    </pre>
+
+
+
+    <div class="container" style="display : flex">
+        <div class="box pink" style="flex-grow: 1">나는 1번</div>
+        <div class="box lightcoral" style="flex-grow: 2">나는 2번</div>
+        <div class="box purple" style="flex-grow: 3">나는 3번</div>
+    </div>
+
+    <hr>
+
+    <pre>
+
+        선택자{
+            flex-direction: column;
+        }
+            요소들을 다시 세로방향으로 쌓을 수 있다.
+    </pre>
+
+    <!--.container>box{나는 $번}*3 -->
+     <div class="container" style="display : flex; flex-direction:column">
+        <div class="box pink" style="flex-grow: 1">나는 1번</div>
+        <div class="box lightcoral" style="flex-grow: 2">나는 2번</div>
+        <div class="box purple" style="flex-grow: 3">나는 3번</div>
+    </div>
+
+    <pre>
+        요소들을 정렬해보기!!
+        justify-content
+        flex-start : 왼쪽정렬 / center : 중앙정렬 / flex-end : 오른쪽 정렬된다
+        space-around : 요소들 사이사이에 동일한 공간 배분
+        space-evenly : 모든 간격을 동일하게
+    </pre>
+
+        <div class="container" style="display :flex; justify-content: space-around">
+        <div class="box pink" style="flex-grow: 1">나는 1번</div>
+        <div class="box lightcoral" style="flex-grow: 2">나는 2번</div>
+        <div class="box purple" style="flex-grow: 3">나는 3번</div>
+    </div>
+
+    <pre>
+        수직정렬
+        align-items
+        stretch : 부모요소 높이에 맞춘다(기본값)
+        baseline : 텍스트에 맞춘다
+
+    </pre>
+<div class="container" style="display :flex; justify-content: center;
+                                        height:400px;align-items:center">
+        <div class="box pink" style="order:  3;">나는 1번</div>
+        <div class="box lightcoral" style="order: 2;">나는 2번</div>
+        <div class="box purple" style="order: 1;">나는 3번</div>
+    </div>
+
+
+
+
+
+<style>
+#container{
+    width: 1200px;
+    margin : auto;
+    background : forestgreen;
+}
+#item{
+    background: yellowgreen;
+    width: 900px;
+    height : 20%;
+    position : absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin:auto;
+}
+
+#item > div{
+    box-sizing: border-box;
+    width: 33%;
+    height: 100%;
+    display: inline-block;
+
+}
+
+
+
+</style>
+
+
+<h5>쉽지 않다</h5>
+<div id="container">
+    <div id="item">
+         <div class="box"> 나는 1번</div>
+         <div class="box"> 나는 2번</div>
+         <div class="box"> 나는 3번</div>
+
+    </div>
+</div>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

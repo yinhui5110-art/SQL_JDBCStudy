@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>레이아웃3번</title>
+    <style>
+        .float{
+            width : 100px;
+            height : 100px;
+            border : 1px solid white;
+            float: left;
+        }
+
+
+        body{
+            background : black;
+            color : white;
+        }
+        
+        .test{
+            width: 150px;
+            height:150px;
+            border-radius: 75px;
+        }
+
+        .pink{
+            background: pink;
+            /*display : none; 안보인다: 공간을 차지하지 않는다*/
+            visibikity: hidden; /* 안보인다 : 공간을 차지한다 */
+        }
+
+        .yellowgreen{
+            background: yellow;
+        }
+
+        .orange{
+            background: green;
+        }
+        
+        #sinhodeung{
+            border: 1px solid white;
+            width: 150px;
+
+        }
+
+        .outer{
+            border: 1px solid white;
+            position : relative; /* <= 자식요소들의 기준점이 된다 */
+            
+        
+        }
+
+
+        .position{
+            border : 1px solid yellow;
+        }
+
+        #p1{
+            width : 300px;
+            height : 300px;
+            background : coral;
+            position : absolute;/* <= 기준점을 기준으로 배치한다는 의미*/
+            left : 100px;
+            top : 10px;
+        }
+
+        #p2{
+            width :  200px;
+            height : 200px;
+            background :  skyblue;
+            position : absolute;
+            left : 150px;
+            top : 70px;
+            transform : rotate(10deg);
+        }
+
+        #p3{
+            width : 100px;
+            height : 100px;
+            background : yellowgreen;
+            position : absolute;
+            left : 80px;
+            top : 90px;
+            transform : rotate(-20deg);
+        }
+
+        #fix{
+            position : fixed;
+            width : 170px;
+            height : 600px;
+            background : lightcoral;
+            right : 100px;
+            top : 30px;
+        }
+
+        .z-test{
+            position : absolute;
+            width: 150px;
+            height : 150px;
+            border : 1px solid white;
+        }
+
+        #z1{
+            background : lightgoldenrodyellow;
+            top: 100px;
+            left: 100px;
+            z-index: 1;
+        }
+        #z2{
+            background : palegoldenrod;
+            top:50px;
+            left: 50px;
+            z-index: 2;
+        }
+
+        #z3{
+            background: goldenrod;
+
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <h3>float</h3>
+<div class="flaot">1</div>
+<div class="flaot">2</div>
+<div class="flaot">3</div>
+<div class="flaot">4</div>
+<div class="flaot">5</div>
+<br clear="both">
+
+
+
+
+
+<h1>배치 해보기</h1>
+
+<hr>
+
+<div id="sinhodeung">
+    <div class="pink test"></div>
+    <div class="yellow test"></div>
+    <div class="green test"></div>
+
+</div>
+
+
+<hr>
+
+<h3>position</h3>
+
+/* .outer>.position{$번 요소}*3 */
+<br>
+<div class="outer">
+    <div class="position" id="p1">1번 요소</div>
+    <div class="position"id ="p2">2번 요소</div>
+    <div class="position" id="p3">3번 요소</div>
+</div>
+
+<br>
+
+
+<div id="fix">따라오는</div>
+
+<div style="width:100%; height: 20px; background:yellow"></div>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<hr>
+
+<h3>z-index</h3>
+
+
+
+<p>페이지안에 요소를 위로 쌓는 속성</p>
+/* .outer>#z$.z-test{요소$}*3 */
+<div class="outer">
+    <div id="z1" class="z-test">요소1</div>
+    <div id="z2" class="z-test">요소2</div>
+    <div id="z3" class="z-test">요소3</div>
+</div>
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

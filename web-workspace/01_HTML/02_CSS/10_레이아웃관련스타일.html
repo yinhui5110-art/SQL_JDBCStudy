@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>1번입니다.</title>
+
+    <style>
+        .size-test{
+            border : 10px solid brown;
+            height : 200px;
+            background-color: aquamarine;
+        }
+
+        #test1{
+            width: 40%
+        }
+
+        #test2{
+            width: 400px;
+        }
+
+        .nemo{
+            width : 150px;
+            height: 150px;
+            border: 1px solid black;
+        }
+
+        .pink{
+            background : pink;
+        }
+
+        .orange{
+            background : orange;
+        }
+
+        .skyblue{
+            background : skyblue;
+        }
+        
+        .purple{
+            background : purple;
+        }
+
+        .lightcoral{
+            background : lightcoral;
+        }
+
+        .inline{
+            display: inline;
+        }
+
+        .ib{
+            display: inline-block;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+<!--
+    블럭요소 : 한 줄 단위로 영역이 잡힌다.
+    인라인요소 : content크기만큼만 영역이 잡힌다.
+-->
+
+<h3> width, height </h3>
+
+
+<p>content영역의 크기를 조절하는 속성</p>
+
+/* #size>#test$.size-test*2 */ <br>
+<div id="size">
+    <div id="test1" class="size-test">
+
+    </div>
+    <div id="test2" class="size-test">
+
+    </div>
+</div>
+
+
+<hr>
+
+<h2>display : 화면 배치 방법 변경</h2>
+
+<pre>
+    선택자{
+        display : inline / ★block / ★inline-block / ★hidden / ★flex
+                    table-cell / ...
+
+    }
+</pre>
+
+<p>기본!</p>
+/*.nemo{$}*5 */
+<br>
+
+<div class="nemo pink">1</div>
+<div class="nemo orange">2</div>
+<div class="nemo skyblue">3</div>
+<div class="nemo purple">4</div>
+<div class="nemo lightcoral">5</div>
+
+
+<hr>
+<p>inline</p>
+<div class="nemo inline pink">1</div>
+<div class="nemo inline orange">2</div>
+<div class="nemo inline skyblue">3</div>
+<div class="nemo inline purple">4</div>
+<div class="nemo inline lightcoral">5</div>
+
+
+<hr>
+
+<p> inline-block </p>
+<div class="nemo ib pink">1</div>
+<div class="nemo ib orange">2</div>
+<div class="nemo ib skyblue">3</div>
+<div class="nemo ib purple">4</div>
+<div class="nemo ib lightcoral">5</div>
+
+<strong>display: inline==width,height속성 적용X</strong>
+
+<hr>
+
+<!--공백 문자 있을 경우 <div class="nemo ib pink">1</div><div class="nemo ib orange">2</div>-->
+<div class="nemo ib pink">1</div
+><div class="nemo ib orange">2</div>
+<div class="nemo ib skyblue">3</div>
+<div class="nemo ib purple">4</div>
+<div class="nemo ib lightcoral">5</div>
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+</body>
+</html>

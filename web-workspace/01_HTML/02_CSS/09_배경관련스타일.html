@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>배경 스타일 만들기</title>
+    <style>
+        body{
+            background-color: black;
+            color : white;
+        }   
+
+        #bg-color{
+            border  : 50px solid white;
+            padding : 30px;
+            background-color : gray;
+            width : 50%;
+        }
+
+
+        #bg-image{
+            border: 1px solid red;
+            width: 70%;
+            height : 800px;
+            background-image : url("data:image/jpeg;base64,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");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+            background-attachment: fixed;
+
+        }
+
+        .test{
+            border : 10px dashed white;
+            margin : 40px;
+            padding : 40px;
+            background-color : lightgray;
+        }
+
+        #div1{
+            backgrpund-clip: border-box;
+        }
+
+        #div2{
+            background-clip: padding-box;
+
+        }
+        #div3{
+            background-clip: content-box;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <h1>배경관련 스타일(background-)</h1>
+
+    <h3>background-color : 배경색을 지정하는 속성</h3>
+
+    <div id="bg-color">7분 있으면 쉬는 시간~</div>
+
+    <hr>
+
+    <pre>
+        선택지{
+            background-image:url(이미지경로);
+            background-repeat / repeat-x / repeat-y / no-repeat
+            background-size : auto / contain / right / center;
+            background-position : left . right / center;
+                                    top / center / bottom;
+            background-attachment : scroll / fixed;
+
+        }
+    </pre>
+
+<div id="bg-image"></div>
+
+
+<hr>
+
+<h3>backgorund-clip : 배경범위 지정</h3>
+
+/* #div$.test*3 */ <br>
+<div id="div1" class="test">
+예수께서 무리가 자기를 에워싸는 것을 보시고 건너편으로 가기를 명하시니라
+</div>
+<div id="div2" class="test">
+예수께서 무리가 자기를 에워싸는 것을 보시고 건너편으로 가기를 명하시니라
+</div>
+<div id="div3" class="test">
+예수께서 무리가 자기를 에워싸는 것을 보시고 건너편으로 가기를 명하시니라
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+</body>
+</html>

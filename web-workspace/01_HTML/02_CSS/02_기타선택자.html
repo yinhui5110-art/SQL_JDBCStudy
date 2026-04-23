@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Css ㅎㅎ</title>
+
+    <link rel="stylesheet" href="02_selector.css">
+</head>
+<body>
+    <h1>기타선택자 학습하기</h1>
+
+    <h2>1. 속성 선택자</h2>
+
+     <p>
+        스타일을 부여하려고하는 요소에 작성되어있는 속성을 이용하는 방법 <br>
+        선택자 뒤에 []를 이용해서 속성과 속성값을 적어서 선택할 수 있음
+     </p>
+    
+     <div class="div-class" name="name1">div1</div>
+     <div class="div-class" name="name2">div2</div>
+     <div class="div-class" name="name3 name1">div3</div>
+     <div class="class-div" name="name4">div4</div>
+
+     <hr>
+
+     <h2>2. 자식선택자와 후손선택자</h2>
+
+     <P>
+        자식 : 바로 하위 요소 <br>
+        후손 : 하위 요소들 전부
+     </P>
+
+     <pre>
+        - 자식선택자
+        a > b{
+            스타일 속성 : 값;
+            ...
+        }
+
+        -후손선택자
+        a b{
+            스타일 속성 : 값;
+            ...
+        }
+     </pre>
+     <div id="test1">
+        <ul>이런경우가
+            <li id="first">있습니다</li>
+            <li>ㅎㅎㅎ</li>
+        </ul>
+        <h4>히히롤롤</h4>
+        <ol>
+            <li>나는 ol자식요소</li>
+            <li>같은ol 자식임</li>
+        </ol>
+        <h5>만들어질 수 있다</h5>
+        <h5 id="first">하하히히리</h5>
+        <h5>하하</h5>
+        <h5>하하</h5>
+        <h5>하하</h5>
+        <h5>하하</h5>
+
+     </div>
+
+     <ul>있어요~
+        <li>많이요~</li>
+        <li>ㅎㅎㄷㄷ</li>
+     </ul>
+
+     <h3>3. 동위(같은레벨)선택자</h3>
+
+    <pre>
+        - a요소 뒤에 있는 b요소 딱 하나만을 선택
+        a+b {
+            스타일 속성 : 값;
+            ...
+        }
+
+        - a요소 뒤에 있는 모든 b요소를 선택
+        a~b{
+            스타일 속성 : 값;
+            ...
+        }
+
+    </pre>
+
+    <div id="test2">div1</div>
+    <div>div2</div>
+    <ul>ul요소</ul>
+    <div>div3</div>
+    <div>div4</div>
+
+<br><br>
+<hr>
+
+<h3>4. 반응 선택자</h3>
+
+<pre>
+    -해당 요소를 클릭하고 있을 때
+    선택자 : active{
+        스타일 속성 : 값;
+    }
+
+    -해당 요소(border)에 마우스커서가 올라가는 순간 선택자
+    선택자:hover{
+        스타일속성 : 값;
+    }
+</pre>
+
+<div id="active" class="area"></div>
+<br>
+<div id="hover" class="area"></div>
+
+<hr>
+
+<h3>상태 선택자</h3>
+
+<div id="chk">
+    <input type="checkbox" id="wolf">
+    <label for="">늑대</label>
+    <input type="checkbox" id="fox">
+    <label for="">여우</label>
+</div>
+
+입력해보기 : <input type ="text" id=""input-el">
+<br>
+
+<button>버튼</button>
+<button>disabled</button>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
