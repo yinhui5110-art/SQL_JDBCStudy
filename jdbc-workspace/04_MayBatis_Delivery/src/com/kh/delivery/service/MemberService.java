@@ -8,21 +8,29 @@ import com.kh.delivery.dto.DeliMemberDto;
 
 public class MemberService {
 	
-	public void signUp(DeliMemberDto member) {
+	public int signUp(DeliMemberDto deliMemberDto) {
 		SqlSession session = DeliveryTemplate.getSqlSession();
 		
-		new MemberDao().signUp(session, member);
-		
+		int result = new MemberDao().signUp(session, deliMemberDto);
+		if(result >0) {
+			session.commit();
+		}
+		session.close();
+		return result;
 	}
 
-	public boolean idCheck(String memberId) {
-		boolean result =  new MemberDao().idCheck(memberId);
+	public boolean checkId(String memberId) {
+		SqlSession session =DeliveryTemplate.getSqlSesison();
+		boolean result =  new MemberDao().checkId(session,memberId);
+		session.close();
 		return result;
 	}
 	
-	public LoginResponse login(DeliMemberDto member) {
-		LoginResponse lr =  new MemberDao().login(member);
-		
+	public DeliMemberDto login(DeliMemberDto deliMemberDto) {
+		SqlSession session = DeliveryTemplate.getSqlSession();
+		DeliMemberDto deliMemberDto = new DeliMemberDto().login(session,deliMemberDto);
+		session.close();
+		return deliMemberDto;
 		
 	}
 	

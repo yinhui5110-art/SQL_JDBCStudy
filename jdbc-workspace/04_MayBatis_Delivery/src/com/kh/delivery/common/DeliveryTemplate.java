@@ -1,5 +1,6 @@
 package com.kh.delivery.common;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -8,28 +9,32 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class DeliveryTemplate {
-	
-	public static SqlSession getSqlSession() {
-		SqlSession sqlSession = null;
+
+	public static SqlSession getSession() {
 		
-		String config ="mybatis-config2.xml";
-		
+		SqlSession session = null;
+		String resource = "mybatis-config.xml";
+		;
 		try {
-			InputStream stream = Resources.getResourceAsStream(config);
-		
-			sqlSession = new SqlSessionFactoryBuilder().build(stream).openSession();
-			
-			
-			
+			InputStream inputStream = Resources.getResourceAsStream(resource);
+			session = new SqlSessionFactoryBuilder().build(inputStream).openSession();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-	
-	
-	   return sqlSession;
+		return session;
 	}
+	
+	
+	
+	
+	
+	
 }
+	
+	
+		
+		
+		
+		
+	
+	
