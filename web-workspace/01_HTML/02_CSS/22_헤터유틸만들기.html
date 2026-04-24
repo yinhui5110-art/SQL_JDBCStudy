@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>유틸만들기</title>
+
+    <style>
+        div{
+            border : 1px solid red;
+        }
+
+        #header_3{
+            width : 150px;
+            height : 160px;
+        }
+        /*-------------분리선 부분-------------------------*/
+
+        #header_3{
+            display: flex;
+            align-items : center;
+            justify-content : flex-center;
+        }
+        #util{
+            display : flex;
+            flex-direction : cloumn;
+            padding-right : 12px;
+        }
+
+        #util>a{
+            color : #cecece;
+            text-decoration : none;
+
+            &:hover{
+                color : #1a1a1a;
+                font-weight : 600;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- #util>a*3 -->
+    <div id="header_3">
+        <div id="util">
+            <a href="#">회원가입</a>
+            <a href="#">로그인</a>
+            <a href="#">장바구니</a>
+        </div>
+    </div>
+
+</body>
+</html>

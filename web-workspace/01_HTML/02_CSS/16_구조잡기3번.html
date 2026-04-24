@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>구조답기3번연습!!</title>
+    <style>
+        div, main, header, footer{
+            border : 1px solid red;
+            box-sizing: border-box;
+
+        }
+        #wrap{
+            width: 1000px;
+            height: 800px;
+            margin:auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header,footer{
+            flex: 2;
+            
+        }
+        main{
+            flex: 6;
+            display: flex;
+        }
+
+        #content-1{
+            flex: 7;
+        }
+
+        #content-2{
+            flex: 3;
+        }
+
+
+    </style>
+
+
+
+</head>
+<body>
+    
+    /*#wrap>header+(main#content-$*2)+footer */
+      <div id="wrap">
+        <header></header>
+        <main>
+            <div id="content-1"></div>
+        </main> 
+        <main>
+            <div id="content-2"></div>
+        </main>
+        <footer></footer>
+      </div>  
+
+
+
+
+</body>
+</html>

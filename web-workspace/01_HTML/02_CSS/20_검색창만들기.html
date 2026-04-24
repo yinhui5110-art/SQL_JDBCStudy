@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>검색하는</title>
+    <style>
+        div,form{
+        border : 1px solid red;
+        box-sizing : border-box;
+        }
+
+        #header_2{
+            width : 650px;
+            height : 160px;
+        }
+        
+        #header_2{
+            display : flex;
+            align-items : center;
+            justify-content : center;
+        }
+
+        /* form태그 */
+        #search-form{
+            width: 85%;
+            height: 44px;
+            display : flex;
+            padding : 4px;
+            background-color: #fafafa;
+            border-radius: 17px;
+        }
+
+        #search-text{
+            flex : 7.5;
+
+        }
+        #search-btn{
+            flex : 1.5;
+        }
+
+        #seadch-text>input{
+            width : 100%;
+            height : 100%;
+            box-sizing: border-box;
+            border: none;
+            padding : 0 15px;
+            color: #1a1a1a;
+            border-radius : 7px;
+
+            &:focus{
+                outline : #eeeeee;
+            }
+        }
+        #search-btn>button{
+            width : 100%;
+            height : 100%;
+            border-radius : 18px;
+            background-color: #1a1a1a;
+            color : #fafafa;
+            font-weight : 600;
+
+            &:hover{
+                background-color :#fafafa;
+                color : #1a1a1a;
+
+            }
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <!-- (#search-text>input)+(#search-btn+button) -->
+    <div id="header_2">
+        <form action="search" method="get" id="search-form">
+            <div id="search-text">
+                <input type="text" name="qurey" placeholder="검색어를 입력" />
+            
+            </div>
+            <div id="search-btn">
+                <button type="sumit">검색하기</button>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>

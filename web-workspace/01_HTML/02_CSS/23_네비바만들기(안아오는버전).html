@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>list가지고 만든다</title>
+    <style>
+        nav,ul,li{
+            border : 1px solid red;
+            box-sizing: border-box;
+        }
+
+        nav{
+            width:1000px;
+            height: 40px;
+        }
+
+        /*------------------------------분리선---------------------------------*/
+
+        nav{
+            border-top : 1px solid #eeeeee;
+            border-bottom : 1px solid #eeeeee;
+        }
+
+        #navbar{
+
+            margin :0;
+            padding : 0;
+            list-style : none;
+            height : 100%;
+            display : flex;
+            justify-content: center;
+            align-items : center;
+        }
+
+        #navber > li {
+            padding : 0 32px;
+
+        }
+
+        #navber > li > a{
+            font-size : 14px;
+            font-weight : 600;
+            color : #1a1a1a;
+            text-decoration : none;
+            letter-spacing : 1px;
+
+            &:hover{
+                color : #eeeeee;
+            }
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- ul#navbar>li*5 -->
+
+    <nav>
+        <ul id="navbar">
+            <li><a href="#"></a>단과반</li>
+            <li><a href="#"></a>자격증대비반</li>
+            <li><a href="#"></a>켜뮤니티</li>
+            <li><a href="#"></a>문의하기</li>
+            <li><a href="#"></a>포트폴리오</li>
+        </ul>
+
+    </nav>
+
+
+
+
+
+</body>
+</html>

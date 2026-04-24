@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>실전실습!!</title>
+    <style>
+        div,header, nav, main, footer{
+            border : 1px solid red;
+            box-sizing: border-box;
+        }
+
+        #wrap{
+            width : 1000px;
+            height : 800px;
+            margin : auto;
+
+            display : flex;
+            flex-direction : column;
+        }
+        header{
+            flex : 2;
+            display:  flex;
+        }
+        nav{
+            flex : 0.5;
+        }
+
+        main{
+            flex : 5.5;
+            display : flex;
+        }
+
+        footer{
+            flex : 2;
+        }
+
+        #header-1{
+            flex : 2;
+        }
+        #header-2{
+            flex : 6.5;
+        }
+        #header-3{
+            flex : 1.5;
+        }
+
+        #content-1{
+            flex : 1.5;
+        }
+        #content-2{
+            flex : 6;
+        }
+
+        #content-3{
+            flex : 2.5;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    
+<!--#warp>(header>#header-$*3)+nav+(main>#content-$*3)+footer --> <br>
+
+<div id="wrap">
+    <header>
+        <div id="header-1"></div>
+        <div id="header-2"></div>
+        <div id="header-3"></div>
+    </header>
+    <nav></nav>
+    <main>
+        <div id="content-1"></div>
+        <div id="content-2"></div>
+        <div id="content-3"></div>
+         </main>
+     <footer></footer>
+    </div> 
+</body>
+</html>

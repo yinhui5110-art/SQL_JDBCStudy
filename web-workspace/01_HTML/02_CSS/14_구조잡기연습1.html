@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>구조잡기 연습1번</title>
+    <style>
+        div{
+            border : 1px solid red;
+            box-sizing: border-box;
+
+        }
+        #wrap{
+            width : 1000px;
+            height : 800px;
+            margin : auto;
+
+        }
+
+        #wrap >div{
+            width : 100%
+        }
+        
+        #header,#footer{
+            height : 200px;
+            height : 25%;
+        }
+        
+        #main{
+            height : 400px;
+            height : 50%;
+        }
+        /*
+        #footer{
+            height : 200px;
+        }
+        */
+
+    </style>
+</head>
+<body>
+
+/* #wrap>#header+#main+#footer */ 
+<br>
+
+<div id="wrap"> <!--전체를 감싸주는 -->
+    <div id="header"></div>
+    <div id="main"></div>
+    <div id="footer"></div>
+</div>
+
+
+
+
+
+    
+</body>
+</html>
