@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TED 스타일 구조</title>
+
+<style>
+div,header,nav,main,footer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 */
+#wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ---------------- header ---------------- */
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header_1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#header_2 ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+#header_3 {
+    text-align: right;
+}
+
+/* ---------------- main ---------------- */
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+/*  TED 핵심: 메인 영상 영역 */
+#content_1 {
+    height: 450px;
+    background: url('https://i.pinimg.com/736x/f3/66/69/f366695b7381e79acf87304c17a0e784.jpg') center 75.8%/cover no-repeat;
+}
+
+/*  콘텐츠 영역 */
+#content_2 {
+    padding: 60px 0;
+}
+
+.card-wrap {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    flex: 1;
+    height: 200px;
+    background:url('https://i.pinimg.com/webp80/1200x/5a/97/ec/5a97eca9291619f2f07732f1ddf4fe1b.webp')center 30% /cover no-repeat;
+    position: relative;
+    color: #f52f2f;
+    overflow: hidden;
+}
+.card-text{
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+
+}
+.card:nth-child(1){
+    background-image: url('https://i.pinimg.com/webp80/1200x/5a/97/ec/5a97eca9291619f2f07732f1ddf4fe1b.webp');
+}
+.card:nth-child(2){
+    background-image: url('https://i.pinimg.com/736x/01/97/9c/01979cf1b2debf9e52872adf25cf3e5c.jpg')center 30%;
+}
+
+
+/*  추천 영역 (subbanner 느낌) */
+#content_3 {
+    padding: 60px 0;
+}
+
+.subbanner {
+    height: 200px;
+    background: #ddd;
+}
+
+/* ---------------- footer ---------------- */
+footer {
+    height: 150px;
+    background: #111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="wrap">
+
+    <!-- header -->
+    <header>
+        <div id="header_1">Ystreet</div>
+
+        <div id="header_2">
+            <ul>
+                <li>Watch</li>
+                <li>Discover</li>
+                <li>Attend</li>
+            </ul>
+        </div>
+
+        <div id="header_3">Login</div>
+    </header>
+
+    <!-- main -->
+    <main>
+
+        <!-- 메인 배너 -->
+        <section id="content_1"></section>
+
+        <!-- 카드 콘텐츠 -->
+        <section id="content_2">
+            <div class="card-wrap">
+                <div class="card">
+                   <div class="card-text"></div>
+                    <h3>SCIENCE</h3>
+                    <p></p>
+                </div>
+                <div class="card">
+                    <div class="card-text"></div>
+                    <h3>Today Weather</h3>
+                    <p></p>
+                </div>
+                <div class="card">
+                     <div class="card-text"></div>
+                    <h3>TECHNOLOGY</h3>
+                    <p></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 서브배너 -->
+        <section id="content_3">
+            <div class="subbanner"></div>
+        </section>
+
+    </main>
+
+    <!-- footer -->
+    <footer>
+        TED Clone Footer
+    </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>변수(공간)</title>
+</head>
+<body>
+    <h1>자바스크립트의 경우 자료형을 선언하지 않는다</h1>
+    <h3>자바스크립트는 총 세개의 키워드로 변수를 선언할 수 있다</h3>
+    <h4>* var, let, const</h4>
+
+    <button onclick="variable();">변수 선언해보기</button>
+
+    <script>
+        function variable(){
+            var userId = 'user01';
+            console.log(userId);
+             userId ='user02';
+            console.log(userId);
+            userId = 123;
+            console.log(userId);
+            userId=false;
+            console.log(userId);
+
+            var userId = 'user03';
+            console.log(userId);
+
+            console.log('--------------------------');
+
+            let userPwd ='pass01';
+            console.log(userPwd);
+
+            userPwd ='pass02';
+            console.log(userPwd);
+
+            //let userPwd; 중복선언을 막는다
+
+            console.log('-----------------------------')
+
+            const userName = '고길동';
+            console.log(userName);
+
+            //userName = '1234';
+            
+            //var / let / const
+            // var ==  중복선언 가능, 재할당 가능
+            // let == 중복선언 불가능, 재할당 가능
+            // const == 중복선언 불가능, 재할당 불가능, 초기화 반드시 해야한다.
+
+            const response = 요청보내기;
+            //정수값(1/0), 조회결과하나, 조회결과여러개
+
+            // 권장사항 : 반드시 const를 이용해서 변수를 선언
+            //              혹시나 변경이 필요할 때는 let을 사용한다
+        
+        };
+    </script>
+
+    <hr>
+
+    <button onclick="scope();">버거킹</button>
+    <script>
+        function scope(){
+
+            for(var i =0; i<5; i++){}
+            console.log(i);
+            if(1){
+                var userName ='홍길동';
+            }
+            console.log(userName);
+
+            //1) var는 functionScope
+            // 변수가 선언된 영역에서 계속 사용할 수 있다.
+
+            if(2){
+                let age =20;
+                const hobby ='취미~';
+
+            }
+            //2) let, const는 blockScope
+            //선언된 블록에서만 사용가능
+            console.log(age);
+            console.log(hobby);
+
+
+        }
+    </script>
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>
