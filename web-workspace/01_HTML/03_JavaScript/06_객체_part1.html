@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>객체 간단하다</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .area{
+            background: white;
+            color: black;
+            border : 1px solid whitesmoke;
+        }
+        .small{
+            height: 300px;
+
+        }
+        .big{
+            height: 500px;
+        }
+        *{
+            margin : 0;
+            padding : 0;
+        }
+        div{
+            box-sizing: border-box;
+        }
+        #wrap{
+            width: 1200px;
+            height: 400px;
+            margin: auto;
+            box-shadow: 1px 2px 12px lightgray;
+        }
+
+           .card{
+            width: 230px;
+            height: 360px;
+            padding: 7px;
+            padding-bottom: 10px;
+            display: inline-block;
+            
+            &:hover{
+                box-shadow: 1px 2px 6px lightgrey;
+            }
+   
+        } 
+        .card img{
+            width: 100%;
+            height : 300px;
+
+        } 
+        .card h4{
+            font-weight: 600px;
+            font-size: 17px;
+        } 
+        .card p{
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>객체</h1>
+
+    <p>
+        property(속성) + value(속성값)를 한쌍으로 저장하는 자료구조 <br>
+        여러개의 속성을 하나의 변수에 담을 수 있게 사용하는 데이터 타입 <br><br>
+
+        자바로 따지면 => DTO / VO /Map
+        
+        -객체는 중괄호 {}를 사용해서 선언 <br>
+        중괄호 안에 객체 가져야 할 속성(property)를 정의한다 <br>
+        참고로 속성값은 모든 자료형 전부 가능하다
+    </p>
+
+    <div id="area" class="area big"></div>
+    <button onclick="createObj();">자바스크립트 객체~</button>
+
+    <script>
+        function createObj(){
+            //네이버웹툰
+            //데이터베이스 -> 웹툰 -> 웹툰의 정보를 저장
+            /*
+              WebToon TABLE
+              WEBTOON_NO | WEBTOON_NAME | WEBTTON_AUTHOR | DAY_OF_THE_WEEK | COOKIE
+                -------------------------------------------------------------------
+                1       |       캐슬2       |       정연      |      수요일     |   3
+                ...
+                ...
+                ---------------------------------------------------------------------
+
+                WebToon(DTO / VO)
+                private int webtoonNo;
+                private String webtoonName;
+                private String webtoonAuthor;
+                private Sting dayOfTheWeek;
+                private int cookie;
+
+                Webtoon castle = new Webtoon(1, "캐슬2", "정연", "수요일", 3);
+            */
+
+                //웹툰정보 DB에서 조회해온다
+                //웹툰번호 -  1     number
+                //웹툰제목 - 캐슬2   string
+                //작가님   - 정연    string
+                //요일     - 수요일  string
+                // 쿠키    -  3      number
+
+                const array=[
+
+                1,
+                '캐슬2',
+                '정연',
+                '수요일',
+                3
+                ];
+
+                const castle = {
+                    "webtoonNo" : 1 ,
+                    "webtoonName" : "캐슬2",
+                    "webtoonAuthor" : "정연",
+                    "dayOfTheWeek" : "수요일",
+                    "cookie" : 3
+                };
+
+                console.log(array);
+                console.log(castle);
+                const area = document.querySelector('#area');
+                area.innerHTML =   `배열 : ${array}<br>
+                                    객체 : ${castle} <br>
+                                    <strong>1번방법</strong><br>
+                                    웹툰번호 : ${castle.webttonNo}<br>
+                                    제목 : ${castle.webtoonName}<br>
+                                    작가 : :${castle.webtoonAuthor}<br>
+                                    <strong>2번방법</strong><br>
+                                    요일 : ${castle["dayOfTheWeek"]}<br>
+                                    쿠키 : ${castle[3]}`;
+
+
+        }
+    </script>
+
+
+    <div id="wrap">
+
+    <button onclick="webtoon();">웹툰보기~</button>
+
+    <script>
+        function 요청보내는함수(){
+            //컨트롤러한테 가서 받아오기~
+        };
+        function webtoon(){
+            요청보내는함수();
+            //자바에서는 1 웹툰 == 1 DTO
+            //                  *5개
+            //                  List<webToonDto>
+            //WebtoonDTO
+            //private String image;
+            //private String name;
+            //private String author;    
+
+              const webtoons = [
+              {  
+                    "imge" :"",
+                    "title" : "이세계에서 유부남된 썰",
+                    "author" : ""
+
+            },{
+                    "imge" :
+                    "title" : 
+                    "author" :
+
+                },{
+                    "imge" :
+                    "title" : 
+                    "author" :
+
+                },{
+                    "imge" :
+                     "title" : 
+                      "author" : "김꿀빨 / 김완두"
+
+                },{
+                     "imge"    :
+                     "title"   : "김부장" 
+                      "author" : "박만사, 남자으 이야기/ 정종택"
+
+                }
+              ];  
+              console.log(webtoons);
+              const el = webtoons.map(W => `<div class="card">
+                                    <image src="${w.image}"/>
+                                    <h4>${w.title}</h4>
+                                    <p>${w.author}</p>
+                                    </div>`).join('');
+          document.querySelector('#wrap').innerHTML =el;                          
+
+        }
+        
+    </script>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

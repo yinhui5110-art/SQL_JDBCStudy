@@ -45,7 +45,7 @@
             //var / let / const
             // var ==  중복선언 가능, 재할당 가능
             // let == 중복선언 불가능, 재할당 가능
-            // const == 중복선언 불가능, 재할당 불가능, 초기화 반드시 해야한다.
+            // const == 중복선언 불가능, 재할당 불가능, 초기화 반드시 해야한다.(불변성을 가져야하지 때문에 자바스크립트에서 const변수선언한다)
 
             const response = 요청보내기;
             //정수값(1/0), 조회결과하나, 조회결과여러개
@@ -85,6 +85,160 @@
 
         }
     </script>
+
+    <hr>
+    <!--클래스 스콥프에서만 사용하는 지역변수-->
+    <!--지역에서만 사용하는 사투리와 같은 지역변수-->
+    <!--변수란 메모리상에 공간을 할당 받는 이름표다-->
+    <!--전지역에서 사용하는 표준어와 같은 전역변수-->
+    <!--다 땡겨서 사용할 수 있는 전역변수-->
+
+    <h4>변수 선언 위치에 따른 전역 / 지역변수로 나눈다</h4>
+
+    <script>
+        var str = 'var 전역변수';
+
+        // window.onload = 현재 이 HTML문서가 전부 다 로딩되고나서 함수 내용이 수행된다
+        // 곧바로 실행할 이벤트 핸들러(익명함수)를 수행한다
+        window.onload =function(){
+            var str = 'var 지역변수';
+
+            console.log(str);
+
+            //1.개체명을쓴다 2.참조한다 3.
+            console.log(window.str);
+
+            console.log(this.str); //this키워드가 항상 window객체를 가리키는 것은 아니다
+
+
+        }
+        /*스콥프 밖에서 했기때문에 콘솔창에 먼저 올라온다*/
+        console.log(str);
+    </script>
+
+    <h3>* 자료형</h3>
+
+    <pre>
+        변수선언시에 자료형을 별도롤 선언하지 않는다
+        그렇다고 자료형의 개념이 없는 것은 아니다
+        =>변수에 대입되는 값에 따라서 알아서 자료형을 결정한다 : 타입추론
+    </pre>
+
+    <h4>자료형의 종류</h4>
+    <ul>
+        <li>string(문자열)</li>
+        <li>number(숫자)</li>
+        <li>boolean(논리)</li>
+        <li>objext(객체)</li>
+        <li>function(함수)</li>
+        <li>underfined(초기화가 안된 상태/초기화를 진행되지 않는)</li>
+    </ul>
+
+    <div class="area" id="area"></div>
+    <button onclick="printType();">자료형 출력해보기</button>
+
+    <script>
+        function printType(){
+            const name ='홍길동';
+            const age = 15;
+            const isGoodThief = true;
+            const hobby =['운동','공부'];
+
+            const family ={
+                아빠 : "홍문",
+                형   : "홍인형"
+            };
+            const call =function(){
+                alert('아버지를 아버지라 못부름');
+            };
+
+            let noVal;
+
+            const area = document.querySelector('#area');
+            //console.log(area);
+
+            /*
+            area.innerHTML = name +'<br>';
+            area.innerHTML += age + '<br>';
+            area.innerHTML += isGoodThief + '<br>';
+            */
+
+            area.innerHTML =`${name}<br>
+                            ${age}<br>
+                            ${isGoodThief}<br>
+                            ${hobby}<br>
+                            ${family}<br>
+                            ${call}<br>
+                            ${noVal}<br><hr>`;
+
+            area.innerHTML += `${typeof name}<br>
+                                ${typeof age}<br>
+                                ${typeof isGoodThief}<br>
+                                ${typeof hobby}<br>
+                                ${typeof family}<br>
+                                ${typeof call}<br>
+                                ${typeof noVal}`;                
+
+        }
+    </script>
+
+    <hr>
+
+    <h3>string타입 메소드들</h3>
+
+    <button onclick="stringMethod();">문자열 메소드 호출</button>
+
+    <script>
+        function stringMethod(){
+
+            const str ="Hello World!";
+
+            console.log(`str :${str}
+                            문자열의 길이 : ${str.length}
+                            thoUpperCase : ${str.toUpperCase()}
+                            toLowerCase : ${str.toLowerCase()}
+                            indexOf : ${str.indexOf('1')}
+                            lastIndexOf : ${str.lastIndexOf('1')}
+                            substring : ${str.substring(3)}
+                            substring : ${str.substring(0,4)}
+                            ${Math.random()}`);
+            console.log('-----------------------------------------------');
+
+            console.log(7 + '7');
+            console.log(7+7+'7');
+            //number가 string으로 형변환이 이루어져서 더하기 연산
+            console.log(7-'7');
+            console.log(7*'7');
+            console.log(7 /'7');
+            console.log('하' - '7');
+
+            const price = '1,000';
+            const salePrice ='700';
+
+            console.log(price + salePrice);
+            console.log(parseInt(salePrice) + parseInt(salePrice));
+            console.log(Number(salePrice) + Number(salePrice));
+
+            console.log(Number(price));
+            console.log(parseInt(price));
+            console.log(isNaN('abc'));
+            console.log(isNaN(123));
+
+        }
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
 
 
 

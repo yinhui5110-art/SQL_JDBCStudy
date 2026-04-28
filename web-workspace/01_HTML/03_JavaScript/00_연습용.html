@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>연습하고 코드 쳐보기</title>
+
+    <style>
+       body{
+            background-color: beige;
+            color: white;
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .area{
+            background: skyblue;
+            color: black;
+            border : 1px solid skyblue;
+        }
+        .small{
+            height: 300px;
+
+        }
+        .big{
+            height: 500px;
+        }
+        *{
+            margin : 0;
+            padding : 0;
+        }
+        div{
+            box-sizing: border-box;
+        }
+        #wrap{
+            width: 1200px;
+            height: 400px;
+            margin: auto;
+            margin-left: 30px;
+            box-shadow: 1px 2px 12px skyblue;
+        }
+
+           .card{
+            width: 230px;
+            height: 360px;
+            padding: 7px;
+            padding-bottom: 10px;
+            display: inline-block;
+            
+            &:hover{
+                box-shadow: 1px 2px 6px skyblue;
+            }
+   
+        } 
+        .card img{
+            width: 100%;
+            height : 300px;
+            padding: auto;
+
+        } 
+        .card h4{
+            font-weight: 600;
+            font-size: 17px;
+        } 
+        .card p{
+            font-size: 14px;
+            font-weight: 500;
+        }
+       
+    </style>
+</head>
+<body>
+  <script>
+    function createObj(){
+        const array=[
+        1,
+        '프로젝트 헤일메리',
+        '앤디 위어',
+        ];
+
+        const aladin ={
+            "bookNo" : 1,
+            "bookName" :"프로젝트 헤일메리",
+            "bookAuthor" : "앤디 위어",
+    
+
+        };
+        console.log(array);
+        console.log(aladin);
+        const area = document.querySelector('#area');
+        area.innerHTML =`배열 : ${array} <br>
+                        객체 : ${aladin}<br>
+                        책번호 : ${aladin.bookNo}<br>
+                        제목 : ${aladin.bookName}<br>
+                        작가 : ${aladin.bookAuthor}`;
+
+    }
+
+
+
+  </script>
+
+    <div id="wrap"class="area big">
+        <button onclick="book();">추천도서~</button>
+
+        <script>
+            function book(){
+                const books =[
+                    {
+                        "imge" : "https://image.aladin.co.kr/product/27045/43/cover500/k692135851_3.jpg",
+                        "title" : "프로젝트 헤일메리 ",
+                        "author" : "앤디 위어"
+                       
+                                                                
+
+                    },{
+                         "imge" : "https://image.aladin.co.kr/product/36566/52/cover500/s632135953_1.jpg",
+                          "title" : "안녕이라 그랬어",
+                          "author" : "김애란"
+                         
+
+                    },{
+                        "imge" : "https://image.aladin.co.kr/product/37676/59/cover500/s612137162_1.jpg",
+                          "title" : "괴테는 모든 것을 말했다",
+                          "author" : "스즈키 유이"
+                        
+                    },{
+                        "imge" : "https://image.aladin.co.kr/product/38935/36/cover500/k442137913_2.jpg",
+                          "title" : "모옌 기담집",
+                          "author" : "모옌"
+                          
+                    },{
+                        "imge" : "https://image.aladin.co.kr/product/11649/82/cover500/8990982707_1.jpg",
+                          "title" : "용의자 X의 헌신",
+                          "author" : "히가시노 게이고"
+
+                    }
+                ];
+                console.log(books);
+                const el=books.map(b =>`<div class="card">
+                                    <img src="${b.imge}"/>
+                                    <h4>${b.title}</h4>
+                                    <p>${b.author}</p>
+                                    </div>`).join('');
+            document.querySelector('#wrap').innerHTML =el;                    
+
+            }
+
+
+
+        </script>
+    </div>
+   
+   
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
