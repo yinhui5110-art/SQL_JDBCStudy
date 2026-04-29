@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>정규펴현식 해보기</title>
+    <style>
+        .area{
+            height: auto;
+            background-color: lightgoldenrodyellow;
+            border : 1px lightyellow;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1>졍규표현식</h1>
+
+    <p>
+        정규표현식(Regular Expression : REGX / REGEXP)이란, <br>
+        특정 패던을 가진 문자열을 찾거나 변경할 떄 사용하는 형식 언어 <br>
+        String 클래스 => mathes() <br>
+
+        정규표현식을 사용하면 조건검사를 하거나 값을 변경할때<br>
+        조건문 /  반복문을 사용하지 않고 간단히 처리가능<br>
+        자바스크립트 뿐만 아니라 자바 /  오라클에서도 사용할 수 있다
+    </p>
+
+    <hr>
+    <div id="area1" class="area"></div>
+    <button onclick="test1();">정규표현식알아보기</button>
+
+    <script>
+        function test1(){
+            // 1.정규식 객체 만들기
+            let regExp = new RegExp('kh');
+            // console.log(regExp);
+            regExp = /kh/;
+            // console.log(regExp);
+
+            // 2. 정규표현식객체의 메소드의 호출 | string객체의 메소드를 호출
+            /*
+
+                ★★-test(문자열) : 문자열에서 정규식값과 일치하는 값이 있다면
+                                    true / 없다면 false 반환을 왜 안했는지
+                     - exec(문자열) : 문자열에서 정규식값과 일치하는 값이 있다면
+                                     처음 매칭된 문자열 / 없다면 null값을 반환   
+
+                    string 객체에서 제공하는 메소드
+                  - amtch(정규식객체) : 문자열에서 정규식값과 "일치하는 값"을 반환
+                  -search(정규식객체) : 문자열에서 정규식값과  "일치하는 시작 인덱스"를 반환
+                                        없다면 -1을 반환
+                   -replace(정규식, 바꿀값) :  문자열에서 정규식 값과 일치하는 첫 번째 값을
+                  
+            */
+
+            // 비교할 문자열
+            const worldBestTop20000 = 'amazon google apple kh samung lg taobao';
+            const area = document.querySelector('#area1')
+
+            area.innerHTM= reg
+
+        }
+    </script>
+
+    <hr>
+
+    <h2>*메타문자</h2>
+    <p>
+        메타문자를 사용해서 "검색하고자 않는 패턴" 을 생성할 수 있음 <brM
+
+    </p>
+
+    <div id =:rare2> c;assP</div>
+
+    <script>
+        function test2(){
+            const area = document.quqerySelector('area2');
+
+            let regExp = /a/;
+
+            const str = 'javascript jquery ajax';
+
+            area.innerHTML = `/a/ : ${regExp.test(str)} <br>
+                                /a/ : $str.replace(regExp, '*')} <br>`;
+
+            // 2.[] : []안에 있는 문자가 하나라도 존재하는지
+            regExp = /[abc]/;
+
+            area.innerHTM += `/[abc]/ : ${regExp.test(str)}<br>
+                              /[abc]/ :${regExp.test('hrrwiqiewt')}<br>
+                              /[abc]/ : ${regExp.test('kkkqqcmmmee')}<br>`;
+
+                //문자열의 시작문자가 j또는 s또는 a인가?
+                //if(str.charAt(0) === 'j' || str.charAt(0) === 's'|| str.charAt(0)==='A')
+              regExp =/^[jsa]/;
+              
+              area.innerHTML += `/^[jsa]/ : ${regExp.test(str)}<br>`;
+
+              // 3. $ : 끝을 의미하는 것
+              regExp = /x$/;
+              area.innerHTM += `/x$/ : ${regExp.test(str)}<br>`;
+
+              //시작은 j로 시작하고 끝글자는 x인지
+              regExp = /^jx$/;
+
+              area,innerHTML += `/^jx$/ : ${regExp.test(str)}<br>
+                                 /^jx$/ : ${regExp.test('jx')} <br>`;
+
+            // 4. . :개행문자를 제회한 모든 문자를 의미(영여,숫자,힌글, 특수문자, 각종전부)
+            // 5. + : 한 글자 이상을 의미(0글자 X)
+
+            //시작부터 끝까지 오로지 숫자값으로 이루어져있는가??
+            regExp = /^[0123456789]+$/; //숫자의 개수는 상관 X 무조건 1글자 이상이어야 true
+            regExp = /^[0-9]+$/;
+
+            area.innerHTML += `/^[0-9]+$/ : ${regExp.test("534534563436534")}<br>
+                                /^[0-9]+$/ : ${regExp.test("1,000")} <br>`;
+
+             regExp = /^[a-zA-Z]+$/;
+             //문자열의 길이는 상관없음 최소한 한글자 이상
+             // 시작부터 끝까지 오로지 영문자(대문자,소문자)로만 이루어진 패턴
+             
+             //영문자 또는 숫자로만 입력하세요
+             regExp = /^[a-zA-Z0-9]+$/;
+             area.innerHTML += `/^[a-zA-Z0-9]+$/ : ${regExp.test('sdfsdffgsge')}<br>
+                                 /^[a-zA-Z0-9]+$/: ${regExp.test('dd하ddd34')}<br> `;
+            
+            regExp = /^[ㄱ-하-ㅣ가-히]+$/;
+            area.innerHTML += `/^[ㄱ-하-ㅣ가-히]+$/  : ${regExp.test("ㅇㄹㄴㅇㅓㅇ로도")}<br> `;                                                  
+
+        }                        
+    </script>
+
+    <h3>*플래그문자</h3>
+    <p>
+        /정규표현식/ 뒤에싸줌 <br><br>
+
+        종류<br>
+        i : 대 / 소문자 전부 검사 <br>
+        g : 문자열 내의 모든 패턴 검사(전역으로보겠다) <br>
+        m : 여러 줄 전부 검사
+    </p>
+
+    <button onclick="test3();">버튼</button>
+
+    <script>
+        function test3(){
+
+            const str = 'JavaScript jQuery AJAX';
+
+            let regExp = /a/;
+            console.log(str.replace(regExp,'ㅋㅋㅋ'));
+
+            regExp = /a/g;
+            console.log(str.replace(regExp, 'ㅋㅋㅋ'));
+        }
+    </script>
+
+    <h3>정규표현식을 이용해서 주민등록번호 검사</h3>
+    주민번호 : <input type="text" id="pno">
+    <button onclick="test4();">리니지 계정 생성</button>
+
+    <script>
+        function test4(){
+            const value = document.querySelector('#pno').value;
+
+            // 생년월일 - 성별지역순서랜덤값
+
+            //숫자 6개 -대쉬 7개
+            //1단계 : 6글자-7글자
+            let regExp = /^.....-.......$/; //... => 글자수 검사하는 패턴이다
+
+            // 2단계 : 숫자여야 한다
+            regExp = /^[0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/;
+            /*
+                * 메타문자
+
+                \d : 숫자(==[0-9])
+                \D : 숫자를 제외한 모든 문자
+                \w : 영문자,숫자, _(==[a-zA-Z0-9_])
+                \W : 영문자, 숫자 _를 제외한 모든문자
+                \s : 공백문자만(스페이스, 탭, 개행문자)
+                \S : 공백문자를 제외한 모든 문자
+            */
+           regExp =/^\d\d\d\d\d\d-[1-4]\d\d\d\d\d\d$/;
+           /*
+            * 수량문자
+            + : 최소한 한 글자 이상
+            * :0글자 이상(0글자 가능)
+            ? : 0글자 또는 1글자(2글자 이상은 불가능)
+
+            {6} : 6글자
+            {2,5} : 2글자 이상 5글자 이하
+            {2,} : 2글자 이상
+            {,6} : 6글자 이하
+           */
+          regExp = /^\d{6}-[1-4]\d{6}$/;
+
+          // 3단계 : 생년월일
+            /*
+
+            -생년(두자리) : \d{2}
+            -월(두자리) : 앞자리가 0일 경우 뒷 자리가 1~9 까지 가능
+                         앞자리가 1일 경우 뒷 자리가 0~2 까지 가능
+             그룹핑(경우1| 경우2)
+             
+             \d{2}(0[1-9]1[0-2])
+             - 일(두가지) : 앞자리가 0일 경우 뒷 자리가 1~9 까지 가능
+                            앞자리가 1,2 일 경우 뒷 자리가 0!9까지 가능
+
+                 \d{2}(0[1-9] | 1[0-2])(0[1-9] | [1-2[0-9]]|3[0-1])           
+            */
+
+            regExp = /^\d{2}(0[1-9] | 1[0-2])(0[1-9] | [1-2[0-9]]|3[0-1]) $/;
+
+
+
+
+        };
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

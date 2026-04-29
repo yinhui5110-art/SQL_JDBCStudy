@@ -70,6 +70,8 @@
         property(속성) + value(속성값)를 한쌍으로 저장하는 자료구조 <br>
         여러개의 속성을 하나의 변수에 담을 수 있게 사용하는 데이터 타입 <br><br>
 
+        
+
         자바로 따지면 => DTO / VO /Map
         
         -객체는 중괄호 {}를 사용해서 선언 <br>
@@ -170,23 +172,23 @@
                     "author" : ""
 
             },{
-                    "imge" :
-                    "title" : 
+                    "imge" :,
+                    "title" : ,
                     "author" :
 
                 },{
-                    "imge" :
-                    "title" : 
+                    "imge" :,
+                    "title" : ,
                     "author" :
 
                 },{
-                    "imge" :
-                     "title" : 
+                    "imge" :,
+                     "title" : ,
                       "author" : "김꿀빨 / 김완두"
 
                 },{
-                     "imge"    :
-                     "title"   : "김부장" 
+                     "imge"    :,
+                     "title"   : "김부장" ,
                       "author" : "박만사, 남자으 이야기/ 정종택"
 
                 }
@@ -202,15 +204,161 @@
         }
         
     </script>
-
-
-
-
-
-
-
-
 </div>
+
+
+<h3>2번 방법으 언제 필요한가?</h3>
+
+ <button onclick="second();">버튼</button>
+    <script>
+        function second(){
+
+            const webtoon={
+                "title~" : "캐슬~",
+                "webtoon name" : "캐슬~"
+            };
+                                
+            console.log(webtoon["webtoon name"]);
+        }
+
+    </script>
+
+    <hr>
+
+    <h3>객체가 가지고 있는 속성에 반복문 사용하기</h3>
+
+    <button onclick="loop();">버튼</button>
+
+    <script>
+        function loop(){
+
+            const human ={
+                name : "홍길동",
+                age : 15,
+                address : "한양"
+           };
+
+           // 반복문 for loop, for of문 사용하기가 힘들다
+           for(let key in human){
+                //console.log(key);
+                //console.log(human.key);
+
+                console.log(human[key]);
+           }
+
+        }
+    </script>
+
+    <h3>객체의 속성(메소드)/클래스내부에 존재하는 함수이다</h3>
+
+    <p>
+        객체의 속성 값 중 자료형이 함수자료형인 속성을 메소드라고 한다
+    </p>
+
+    <button onclick="method">메소드버튼</button>
+
+    <script>
+        function method(){
+
+            const name = 'huihui';
+            const arma= {
+                name : "야르",
+                kind : "아르마딜로",
+                circle : function(){
+                    alert(`${this.name}가 둥글게둥글게 몸을 맙미다~~`);
+                    //속성명 또는 변수명을 사용하는데 this키워드를 붙이지 않으면
+                    //외부에 존재하는 변수가 호출된다!
+                }
+            };
+            arma.circle();
+        }
+    </script>
+
+        <h3>실습~!!</h3>
+        이름 : <input type="text" id="name"><br>
+        국어점수 : <input type="text" id="kor"><br>
+        영어점수 : <input type="text" id="eng"><br>
+        <button onclick="into">확인하기</button>
+        <div id="area9" class="area big"></div>
+
+        <script>
+            function info(){
+                //객체 만들기 실습
+                //객체명 : student
+
+
+                const studentName=document.querySelector('#name').value;
+               // console.log(studentName);
+
+                const korScore = document.querySelector('#kor').value;
+                const engScore= document.querySelector('#eng').value;
+
+                const student ={
+                    name : studentName,
+                    kor : korScore,
+                    eng : engScore,
+                    getSum : function(){
+                        return Number(korScore) + Number(engScore);
+                    },
+                    getAvg : function(){
+                        return this.getSum() / 2;
+                    },
+                    toString : function(){
+                        return `학생명 : ${this.name}<br>
+                                국어점수 : ${this.kor}<br>
+                                영어점수 : ${this.eng}<br>
+                                힙계 : ${this.getSum()}<br>
+                                평균 : ${this.getAvg()}<br>`;
+                    }
+                };
+                console.log(student.getAvg());
+
+                document.querySelector('#area9').innerHTML = student;
+                   
+                console.log("name" in student);
+                console.log("name2" in student);
+
+                with(student){
+                    console.log(kor);
+                    console.log(eng);
+                }
+
+            }
+
+        </script>
+
+        <hr>
+
+        <h3>* 객체 속성 추가하기! 또는 속성 제거하기!</h3>
+        <button onclick="addProperty();">속성추가하기!</button>
+
+        <script>
+            function addProperty(){
+
+                const student = {}
+
+                student.name ='홍길동';
+                student.age = 15;
+                
+
+                console.log(student);
+
+                delete student.age;
+                console.log(student);
+
+
+
+            }
+
+
+
+
+
+        </script>
+
+
+
+
 
 
 

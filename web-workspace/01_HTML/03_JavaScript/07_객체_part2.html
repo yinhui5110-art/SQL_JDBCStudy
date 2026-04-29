@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>객체 part2</title>
+
+    <style>
+        .area{
+            background-color:  lemonchiffon;
+            border : 1px solid blanchedalmond;
+            height : 300px;
+
+        }
+    </style>
+</head>
+<body>
+
+    <h3>* 생성자 함수</h3>
+
+    <button onclick="con();">생성해야지</button>
+
+    <script>
+        function con(){
+            //webtoon객체 생성자 함수 만들기
+            
+
+            //생성자 함수(선언할 때 첫글자를 대문자로 만들어야한다!!)
+            function Webtoon(image,title,author){
+
+             //   this ={
+
+              //  };
+               
+                //객체의 속성을 추가하는 것!
+                this.image = image;
+                this.title = title;
+                this.author = author;
+                
+                //return this;
+            };
+
+            const webtoon2 = new Webtoon("이미지경로", "캐슬2", "정연");
+            const webtoon3 = new Webtoon("하하","호호", "히히");
+
+            console.log(webtoon2);
+
+        }
+    </script>
+
+    <hr>
+
+    <h3> * Date 객체</h3>
+
+    <button onclick="dateFn();">날짜 사용</button>
+    <div id="area1" class="area"></div>
+    
+    <script>
+        function dateFn(){
+            const area = document.querySelector('#area1');
+
+            //Date 객체 생성
+            const date1 = new Date();
+            area.innerHTML = `현재 날짜 및 시간 : ${date1} <br>`;
+
+            //2026년 9월 23일로 세팅해보기
+            const date2 = new Date(2026, 9 - 1 ,23);
+            area.innerHTML += `종강일 : ${date2}<br>`;
+
+            //요일만 알아내고 싶을때는?
+            //0 ==주일, 1 == 월요일, 2 == 화요일 ...6 == 토요일
+            area.innerHTML +=  `${date1.getDay()}`;
+
+            // 2026년 9월 23일 17시 50분으로 세팅해보기
+            const date3 = new Date(2026,9 -1, 23,17,50,0);
+            area.innerHTML += `종강일(시간) : ${date3}<br>`;
+
+            //ms단위
+            //1000ms = 1s
+
+            const date4 = new Date(2026, 9 - 1, 23, 17, 50, 0, 5000);
+            area.innerHTML += `종강일(찐) : ${date4}<br>`;
+
+            const endDay = new Date(2026, 9-1, 23);
+            const today = new Date();
+            area.innerHTML+= `디데이 : ${endDay - today} <br>`;
+
+            const dDay = (endDay -today) / (24*60*60*1000);
+            alert(`종강까지 ${Math.cell(dDay)})일 남았어요~`);
+
+            area.innerHTML +=`
+                                ${date.getFllYear()}<br>
+                                ${date1.getMonth() +1}<br>
+                                ${daate1.getHour()} <br>`;
+
+
+        }
+    </script>
+    <hr>
+    <h2>브라우저에서 제공하는 인터페이스</h2>
+
+    <p>
+        브라우저 상에서 자바스크립트라는 언어로 브라우저라는 프로그램을 제어할 수 있도록
+        BOM과 DOM이라는 인터페이스가 제공된다 <br><br>
+
+        -BOM(Brower Object Model) : 브라우저 관련 <br>
+        -DOM(Document Objext Model) : HTML문서 관련 <br>
+    </p>
+
+    <hr>
+
+    <h3>window 객체의 메소드</h3>
+    
+    <button onclick="openFn();">요즘에도 간혹가다가 이런게 보이긴함</button>
+
+  <script>
+    function openFn(){
+
+    }
+  </script>
+
+
+
+<hr>
+
+<h4>*window.setTimeout(함수,ms)</h4>
+
+<button onclick="timeout();">나는버튼이다</button>
+
+<script>
+    function timeout(){
+        setTimeout(()=> {
+            alert('안녕~');
+        }, 5000);
+    };
+
+    const newWindow = open();
+    newWindow.alert('이 버튼을 누르면 3초 뒤 창이 닫힌다');
+
+
+    window,onload =() =>{
+        setTimeout(() => {
+            //window.open('http://www.never.com', "허허", 'width=400, height=500');
+        }, 3000);
+    
+    };
+
+</script>
+    
+    <hr>
+
+    <h4>window.setInterval(함수,ms)</h4>
+
+    <button onclick="timer();">째깍째깍</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        function timer(){
+            const area = document.querySelector('#area2');
+            const value = 'ㅋ';
+            let sec = 10;
+
+            setInterval(() =>{
+               // area.innerHTML += value;
+               //area.innerHTML = count--;
+                const date = new Date();
+                let hour = date.getHours();
+                let min = date.getMinutes();
+                let sec = date.getSeconds();
+                
+                area.innerHTML = `현재시간 : ${hour} : ${min} : ${sec}`;
+            }, 1000);
+            
+            // setInterval : 지정한 간격 마다 "매 번" 핸들러를 수행한다
+        };
+    </script>
+
+
+    <hr>
+
+    <h3>BOM</h3>
+
+    <p>location, screen, navigator</p>
+
+    <h4>location 객체</h4>
+    <button onclick="console.log(location)">로케이션확인!</button>
+    <a href="http://www.naver.com">하이빠레파란스~~</a>
+
+    <p>브라우저의 주소 입력창 => URL(herf속성값)</p>
+    <button onclick="loc();">매카니즘</button>
+
+    <script>
+        function loc(){
+            location.href = 'http://www.naver.com';
+        }
+    </script>
+
+    <!-- 새로 고침 : 현재 URL로 -->
+     <button onclick="location.href=loaction.href">새로고침버튼</button>
+     <button onclick="location.reload();">새로고침</button>
+
+     <h5>screen, navigator</h5>
+
+     <button onclick="console.log(screen)">스크린</button>
+     <button onclick="console.log(navigator)">네비</button>
+
+     <p>screen : 사용자가 보고있는 화면에 대한 정보</p>
+     <p>navigator : 브라우저에 대한 정보</p>
+
+     <h2>* DOM</h2>
+
+     <p>
+        원리 공부하기 <br>
+        - 요소 노드(Element Node) : 태그 자체를 의미한다 <br>
+        -텍스트 노드(Text Node) : 태그의 Content내에 기록되는 내용을 의미한다<br>
+
+        텍스트노드가 없는 요소 (빈태그) : input, img,br, hr ...<br>
+
+     </p>
+
+     <div id="area3" class="area"></div>
+     <button onclick="addElement();">만들어보자 요소를</button>
+
+     <script>
+        function addElement(){
+            //동적인 요소 만들기
+            // 처음 문서를 로딩할 때는 존재하지 않다가
+            // 나중에 만들어지는 요소 == 동적인 요소
+
+            // 컨트롤러에서  user01이라는 문자열을 반환해주었다고 가정하면
+            // <h3>조회된문자열</h3>
+
+            const userId = 'user01';
+
+            // 1. 문자열로 만드는 방법
+            // document.getQuerySelector('#area3').innerHTML = `<h3>${userId}</h3>`;
+
+            // 2. document객체가 제공하는 메소드를 통해 "요소 객체"를 만들기
+            const elementNode = document.createElement('h3');
+            console.log(elementNode);
+            const textNode = document.createTextNode(userId);
+            console.log(textNode);
+
+            elementNode.appendChild(textNode);
+            console.log(elementNode);
+
+            //document.querySelector('#area3').innerHTML = elementNode;
+            document.querySelector('#area3').appendChild(elementNode);
+
+            //나중에 배울 React는 가상 DOM개념을 사용한다
+
+            const img = document.createElement('img');
+
+             img.src = 'https://ssl.pstatic.net/melona/libs/1566/1566223/adbdaec3586f90c08458_20260415110447056_1.png';
+
+            document.querySelector('#area3').appendchild(img);
+
+           
+
+
+
+        };
+     </script>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
