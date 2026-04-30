@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>선택자</title>
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <h1>선택자 복습</h1>
+    
+    <h3>아이디 선택자</h3>
+
+    <p>현재 HTML문서에서 고유한 아이디 속성값을 가진 요소 단 하나만 선택</p>
+
+    <!-- h3#id${id$}*2 -->
+     <h3 id="id1">id1</h3>
+     <h3 id="id2">id2</h3>
+
+    <script>
+        $(function(){
+
+            const h3El = document.querySelector('#id1');
+
+            h3El.innerHTML = '컨텐트';
+            h3El.style.color = 'green';
+
+            $('#id2').html('컨텐트').css('color' , 'green');
+            // .html : innerHTML속성과 관련된 기능을 수행하는 메소드
+              
+        });
+    </script>
+
+    <h3></h3>
+
+    <!-- p*3+pre*3+div*3 -->
+
+     <p>Java</p>
+     <p>Oracle</p>
+     <p>JDBC</p>
+     <pre>HTML</pre>
+     <pre>CSS</pre>
+     <pre>JavaScript</pre>
+     <div>jQuery</div>
+     <div>MyBatis</div>
+
+     <script>
+
+        $(function(){
+            $('p,pre,div').css('background','pink');
+
+        });
+     </script>
+
+     <hr>
+
+     <h3> * 클래스 선택자</h3>
+
+     <!-- h4.item.select{Class$}*3 -->
+
+     <h4 class="item select">Class1</h4>
+     <h4 class="item select">Class2</h4>
+     <h4 class="item select">Class3</h4>
+
+     <script>
+        $(function(){
+
+            const items = doucment.querySelectorAll('.item');
+            for(let item of items){
+                item.onclick = function(){
+                    alert('하이~~');
+                }
+            };
+
+
+            $('.select').click(function(){
+                consile.log('흐하하~');
+            });
+
+             //자바 map를 생각하면 된다
+             const result = [1, 2, 3].map(function(e){
+                return e + 1;
+             });
+             console.log(result);
+
+        });
+     </script>
+
+    
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>1번 버스 데이터 출력</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    
+    <button onclick="gogo();">버스도착정보보기~</button>
+    <div style="padding : 100px;" id="incheon">
+    </div>
+    <script>
+        let pageNo = 1;
+        function gogo(){
+            $.ajax({   
+               url:'https://apis.data.go.kr/B551177/ShtbusInfo/getShtbArrivalPredInfo?serviceKey=dba5f5002bfa00eebfd01fac050de7b49f7c4489b8f3ccd781209169097a1cab&type=json&location=0&numOfRows=10&pageNo=' + pageNo++,
+                dataType :'json',
+               success : e => {
+                const items = e.response.body.items;
+                console.log(items);
+
+                const el = items.map(e =>`
+                                           <div style="display: flex; border 1px solid #1a1a1a; padding: 10px; margin-bottom:10px;">
+                                            <h4>정류장ID : ${e.stopId}</h4>
+                                            <p>순서 : ${e.ord}</p> 
+                                            <p>노선ID : ${e.routeId}</p>
+                                            <p>시간 : ${formatTime(e.ofrTime)}</p>
+                                            </div>
+
+                                            <div style="flex:3;">
+                                                <img src="https://lh3.googleusercontent.com/proxy/Osgz2dhFzbpzohAhzpvOj8kr-yg5e1qTXgd7KQ94OlIfHsT7R9BZGan5QxVV-9HzSKf2aSAjEPlAbXqyd2aLrmBqzEywhD4iWJtlVCc62A"
+                                                 style="width:120px; height:auto; object-fit:cover;">
+                                                     </div>
+                                            
+                                      
+                                                `).join('');
+         document.querySelector('#incheon').innerHTML=el;                                      
+
+
+               }
+
+                   
+            });
+
+
+        }
+
+        //시간 변환
+        function formatTime(time){
+            return time.substring(8,10) + ":" + time.substring(10,12);
+        }
+
+    </script>
+
+<!-- https://www.data.go.kr/index.do 공공데이터포탈-->
+    <hr>
+    <button onclick=""></button>
+
+
+
+</body>
+</html>

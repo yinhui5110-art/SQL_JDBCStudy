@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>제이쿼리</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    
+<h1>아직도 너무 많이 남아있는 jQuery란 무엇인가?</h1>
+
+<a href="http://jquery.com" target"_black">궁금궁금</a>
+<!--javaScript함수 모음집-->
+
+<p>
+    기존 자바스트립트만으로는 (옛날얘기) 브라우저마다 각기 다른 코드를 작성해서 <br>
+    브라우저를 조작해야하는 어려움이 있었다!! <br>
+    창시자 "존 레식"은 이런 문제를 해결하기 위해 JavaScript라는 언어를 이용해서 <br>
+    이것이 바로 jquery라는 라이브러리인 것이다 <br>
+    자바스트립트로 함수 많이 모아놓은 파일이다 ==  라이브러리 <br>
+
+    -사람들은 대체 왜 그렇세 jQuery에 열광했나요? <br>
+    1)DOM요소와 관련된 스크립트 코드를 아~주 쉽게 구현할 수 있었다 <br>
+    2)AJAX(비동기식 통식), 이벤트 처리를  쉽게 구현할 수 있다 <br>
+    3)jQuery와 관련된 확장 플러그인, Open API등이 많이 지원된다. <br>
+
+    => 조금 쓰고 많이 할 수 있다<!DOCTYPE html>
+    단점 => 바닐라 자바스트립트 대비 속도가 너무 느림, 요즘 신규개발엔 사용되지 않는다
+
+</p>
+
+
+   <hr>
+
+   <h3> * jQuery라이브러리 연결 방법</h3>
+
+   <p>head영역에 script태그로 jQuery</p>
+
+ <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+ </ul>
+
+ <script>
+    $(function (){
+        //const li = document.querySelectorAll('ul>li');
+       
+        $('ul > li').css('background','yellow')
+                     .css('color', 'red')
+                     .css('font-size','17px')
+                     .html('하하하')
+                     .click(() =>{
+                        alert('하하하하하');
+                     });
+
+        });
+    </script>
+
+
+
+ <ol>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+ </ol>
+
+
+<h3>* jQuery사용하기</h3>
+
+<p>
+   jQuery를 사용해서 DOM을 다룰 예정 <br>
+   jQuery코드가 문서상 모든 요소들이 전부 다 로드된 후 에 실행할 수 있게끔
+   만들어 주어야 한다 => window.onload
+</p>
+
+
+<pre>
+   onload : 페이지가 전부 다 로딩되고나면 자동으로 딱 한 번 수행
+   해당 HTML무넛의 요소들도 전부 다 로딩되고 연동되어있는 외뷰 문서들도
+   전부 다 로딩된 후에 onload속성에 대입한 이벤트 핸들러가 수행되는 특징을 가진다
+</pre>
+
+<script>
+   window.onload = function(){
+      console.log('안녕하세요~');
+   };
+</script>
+
+
+<pre>
+   -jQuery에서는 해당 내용을 세 가지 구문을 제공하여 해결하기
+
+   1)
+   jQuery(document).ready(function(){
+      실행하고싶은내용;
+   });
+    <!--제이쿼리 객체-->
+    2)
+    $ : jQuery키워드를 나타낸다
+    $(document).ready(function(){
+      실행하고싶은내용;
+    });
+
+    3)
+    $(function(){
+      실행해고싶은내용;
+    });
+
+    jQuery에서 해당 function은 HTML문서안에있는 DOM요소들이 모두 로딩되면 바로실행
+    여러번 기술 가능, 횟수 제한 없음
+
+</pre>
+
+<script>
+   $(function(){
+      console.log('안녕~');
+   });
+   $(function(){
+      console.log('반갑습니다~');
+   });
+
+   $(function(){
+
+      // $('선택자') : css에서 학습한 선택자를 이용해서 요소를 선택
+      //.css() : 선택된 요소들의 스타일과 관련된 기능을 수행
+
+      const li = document.querySelectorAll('li');
+      for(let el of li){
+         el.style.color = 'green';
+      };
+      //console.log($('pre'));
+      $('pre').css('color','blue');
+
+   });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

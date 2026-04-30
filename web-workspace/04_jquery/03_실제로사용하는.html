@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery 사용해서</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>AJAX</h1>
+
+<pre>
+    Asynchronous JavaScript And XML
+</pre>
+
+<!--
+
+    시군명, 사업장명, 소재지도로명주소
+
+-->
+
+    <div id="cafe-result">
+        <table class="table table-hover table-dark table-borderless">
+            <thead>
+                <tr>
+                    <th width="300">지역</th>
+                    <th width="300">카페명</th>
+                    <th width="600">주소</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <button onclick="ne();" class="btn btn-lg btn-outline-secondary">다음</button>
+
+    <div>
+        <img src="https://happybean-phinf.pstatic.net/20260424_238/1776999463820pVhsa_JPEG/%25EB%25B2%25B0%25EF%25A4%25EB.jpg" alt="">
+        <div class="card-body">
+            <h5 class="card-title">card title</h5>
+            <p class="card-text">some quick example text to build on the card title and make</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <script>
+            let page = 1;
+            function ne(){
+                page++;
+                requestCafe(page);
+            };
+            
+           
+            function requestCafe(pageNo){
+            if(!pageNo) pageNo = 1;
+
+             $.ajax({
+                url : 'https://openapi.gg.go.kr/Genrestrtcate?Type=json&pSize=10&KEY=985455fd7eae4fbfbb4ff10f20e5d2ac&pIndex='+ pageNo,
+                dataType : 'json',
+                success : result => {
+                    console.log(result.Genrestrtcate[1].row);
+                    const cafes = result.Genrestrtcate[1].row;
+
+                    //console.log(cafe[0].BIZPLC_NM);
+                    //console.log(cafe[0].SIGUN_NM);
+                   // console.log(cafe[0].REFINE_ROADNM_ADDR);
+                    /*
+                    const name = cafes[0].BIZPLC_NM;
+                    const sigunName = cafes[0].SIGUN_NM;
+                    const address = cafes[0].REFINE_ROADNM_ADDR;
+                    const el = `<tr> 
+                                    <th>${name}</th>
+                                    <th>${sigunName}</th>
+                                    <th>${address}</th>
+                                </tr>`;
+                    */
+                                
+                                    
+                         
+                    const el = cafes.map(e => `<tr>
+                                                <th>${e.SIGUN_NM}</th>
+                                                <th>${e.BIZPLC_NM}</th>
+                                                <th>${e.REFINE_ROADNM_ADDR}</th>
+                                                </tr>`).join('');
+                     document.querySelector('tbody').innerHTML = el;                            
+                }
+                
+            }); 
+        }
+
+        $(function(){
+            requestCafe();
+        });
+    </script>
+
+
+<hr>
+
+<button type="button" id="show" class="btn btn-primary">Primary</button>
+<button type="button"  id="hide" class="btn btn-secondary">Secondary</button>
+<button type="button" id="toggle" class="btn btn-success">Success</button>
+<button type="button" id="fadeIn" class="btn btn-danger">Danger</button>
+<button type="button" id="fadeOut" class="btn btn-warning">Warning</button>
+<button type="button" id="fadeToggle" class="btn btn-info">Info</button>
+
+<img src="" alt=""
+width="800"
+height="160"
+id="andar">
+
+<script>
+    $(function(){
+        $('#hide').click(function(){
+            $('#andar').hide(5000);
+        });
+        $('#show').click(function(){
+            $('#andar').show(3000)
+        });
+        $('#toggle').click(function(){
+             $('#andar').toggle(500);
+        });
+        $('#fadeout').click(function(){
+            $('#andar').fadeOut(3000);
+        })
+        $('#fadeIn').click(function(){
+                $('#andar').fadeIn(3000);
+        });
+        $('#fadeToggle').click(function(){
+                $('andar').fadeToggle(1000);
+        });
+
+    });
+</script>
+
+    <hr>
+
+    <h4>* 글자수세기 예제</h4>
+
+    <div style="border: 1px solid rgb(77, 76, 76);">
+        <br>
+        40자 이내로 입력하세요 . <br>
+        <hr>
+        <textarea   id="content"
+                    cols="40"
+                    rows="10"
+                    style="resize:none;"
+                    maxlength="40"></textarea>
+         <hr>
+         <br>
+         <span id="count">0</span>/40           
+        <br>
+    </div>
+    <script>
+        $(function(){
+            $('#content').keyup(e => {
+                console.log(e.target.value.length);
+                $('#count').html(e.target.value.length);
+            })
+
+        });
+    </script>
+    
+    <hr>
+
+  <button onclick="letsGo();">곤드레만드레밥보기</button>
+  <div style="padding :100px;"  id="busan">
+  </div>
+
+<script>
+    let pageNo = 1;
+    function letsGo(){
+        $.ajax({
+            url:'https://apis.data.go.kr/6260000/FoodService/getFoodKr?serviceKey=dba5f5002bfa00eebfd01fac050de7b49f7c4489b8f3ccd781209169097a1cab&pageNo=1&numOfRows=10&resultType=json&pageNo= 1' + pageNo++,
+            dataType : 'json',
+            success : e =>{
+               // console.log(e.getFoodKr.item);
+                const items = e.getFoodKr.item;
+                console.log(items);
+
+                const el = items.map(e => ` 
+                                            <div style="display : flex; width: 100%; height : 160px;
+                                                                    margin-bottom: 10px;">
+                                                <div style="flex:2; padding: 7px;">
+                                                    <img src ="${e.MAIN_IMG_NORMAL}"
+                                                            width="100%"
+                                                            height="100%"/>
+                                                    </div>
+                                                    <div style="flex:8; padding: 7px;">
+                                                        <h4>기계명 :${e.MAIN_TITLE}</h4>
+                                                        <p>대표메뉴 :${e.RPRSNTV_MENU}</p>
+                                                        <div>
+                                                            ${e.ITEMCNTNTS}
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        `).join('');
+                    document.querySelector('#busan').innerHTML =el;                                    
+                                                
+            }
+        });
+
+    }
+
+
+</script>
+
+<!--
+    jQuery :  자바스크립트 라이브러리(모음집)
+
+    요소 선택하는 방법 :  $('CSS선택자')
+    Content영역 변경하는 법 : html()
+    Sytle 변경하는 법 :  css()
+    EventHandler 다는법(click) : click()
+    Input요소 value속성 접근하는법 : val()
+-->
+
+<!--
+
+API 3개 찾아서 
+
+카페 혹은 지역맛집 구현한 것처럼
+
+버튼 클릭 시 정보를 제공하는 페이지 3개 만들기
+
+-->
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
